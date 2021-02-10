@@ -6,7 +6,7 @@ class ViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    printBiggerNumber(numberOne: 4, numberTwo: 5)
+    printBiggerNumber()
     math(number: 6)
     reverseNumber(number: 5)
     denominatorNumber(number: 8)
@@ -20,7 +20,9 @@ class ViewController: UIViewController {
   
   //BLOCK #1
   // task 0: Вывести на экран наибольшее из двух чисел
-  func printBiggerNumber(numberOne: Int, numberTwo: Int) {
+  func printBiggerNumber() {
+    let numberOne = Int.random(in: 0...100)
+    let numberTwo = Int.random(in: 0...100)
     if numberOne == numberTwo {
       print("\(numberOne) is EQUAL to \(numberTwo)")
     } else if numberOne > numberTwo {
@@ -47,12 +49,14 @@ class ViewController: UIViewController {
   // task 3: Подсчитать общее количество делителей числа и вывести их
   func denominatorNumber(number: Int) {
     var i = 0
+    var denominators = [Int]()
     for value in 1...number {
       if (number % value == 0) {
         i += 1
+        denominators.append(value)
       }
     }
-    print("Amount of determinators of number \"\(number)\" is \(i)")
+    print("Amount of determinators of number \"\(number)\" is \(i), denominators are: \(denominators)")
   }
   
   // task 4: Проверить, является ли заданное число совершенным и найти их (делители)
@@ -83,7 +87,7 @@ class ViewController: UIViewController {
     let percentValue = 0.06
     var price:Double = 24
     
-    for _ in dateOne...dateTwo {
+    for _ in dateOne...dateTwo-1 {
       let money = price+(price*percentValue)
       price = money
     }
